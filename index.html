@@ -1,0 +1,152 @@
+
+.hero {
+  min-height: 650px;
+  background:
+    linear-gradient(90deg, rgba(2,25,48,.85), rgba(2,25,48,.20)),
+    url('school-photo.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 8%;
+  color: white;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 720px;
+  animation: appear 1s ease;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero h1 span { color: #e5bd6c; }
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(25px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.campus-card {
+  transition: .3s;
+}
+.campus-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px #0002;
+}
+
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About Us</a>
+  <a href="#campus">Gallery</a>
+  <a href="#facilities">Facilities</a>
+  <a href="#fees">Fee Portal</a>
+</nav>
+
+
+<section id="facilities">
+  <div class="section-title">
+    <h2>Discover Our School</h2>
+    <p>A place to learn, explore and grow.</p>
+  </div>
+
+  <div class="campus-grid">
+    <div class="campus-card">
+      <img src="school-photo.png" alt="School campus">
+      <h3>Our Campus</h3>
+    </div>
+
+    <div class="campus-card">
+      <img src="school-photo.png" alt="School building">
+      <h3>School Environment</h3>
+    </div>
+
+    <div class="campus-card">
+      <img src="school-photo.png" alt="School facilities">
+      <h3>Learning Spaces</h3>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:25px">
+    <a class="btn"
+       href="https://ezyschooling.com/school/lakes-international-school-bhimtal-nainital/photos"
+       target="_blank" rel="noopener">
+       VIEW SCHOOL PHOTO GALLERY →
+    </a>
+  </p>
+</section>
+
+
+<div class="qr-area">
+  <h3 style="color:#063b65;margin-bottom:15px">
+    Scan QR Code to Pay
+  </h3>
+
+  <img
+    src="qr-code.jpeg"
+    alt="Payment QR Code"
+    style="width:100%;max-width:340px;display:block;margin:auto"
+  >
+</div>
+
+
+<div style="border:1px solid #ddd;padding:18px;border-radius:10px;margin-top:20px">
+
+  <h3 style="color:#063b65">Other Payment Option</h3>
+
+  <p style="font-size:13px;color:#777;margin:8px 0">
+    Optional: Credit Card / Debit Card
+  </p>
+
+  <label>
+    <input type="radio" name="paymentMethod"
+      value="UPI" checked style="width:auto">
+    UPI / QR Payment
+  </label>
+
+  <br>
+
+  <label>
+    <input type="radio" name="paymentMethod"
+      value="Card" style="width:auto">
+    Credit Card / Debit Card
+  </label>
+
+  <p style="font-size:12px;color:#777;margin-top:12px">
+    Card payments require a secure payment gateway.
+    Card details must never be entered or stored on this demo website.
+  </p>
+
+  <button class="btn" type="button"
+    onclick="selectPaymentMethod()">
+    CONTINUE
+  </button>
+
+  <p id="methodMessage" style="font-size:13px;margin-top:10px"></p>
+</div>
+
+
+function selectPaymentMethod() {
+  const method = document.querySelector(
+    'input[name="paymentMethod"]:checked'
+  ).value;
+
+  const message = document.getElementById("methodMessage");
+
+  if (method === "UPI") {
+    message.innerText =
+      "Please scan the QR code above and verify the recipient in your UPI app.";
+  } else {
+    message.innerText =
+      "Card payment is optional but requires integration with a secure payment gateway. It is not enabled in this demo.";
+  }
+}
